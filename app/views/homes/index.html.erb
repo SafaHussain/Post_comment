@@ -1,0 +1,40 @@
+ <center><h2 >Welcome Back <%= current_user.name%></h2></center>
+
+    <%
+=begin%>
+ <button> <%=link_to"Logout", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to logout?"} %> </button>   
+<%
+=end%>
+   
+
+
+ <br>
+ <br>
+ <h3> Presenting you users in database! </h3>   
+ 
+    <table class="table table-success table-striped">
+    <tr> 
+     <th> Name </th> 
+     <th> Address </th> 
+     <th> Email </th> 
+     <th> Password </th> 
+     <th> Edit </th>
+     <th> Show </th>
+     <th> Delete </th>
+    </tr> 
+
+<% @users.each do|u| %> 
+    <tr>
+    <td> <%= u.name %></td>
+    <td> <%= u.address %></td>
+    <td> <%= u.email %></td>
+    <td> <%= u.password %></td>
+      <td>   <div class = "col-md-2"> <%= link_to "Edit", edit_user_registration_path(id: u.id) %> </div></td>
+      <td>  <div class = "col-md-1">  <%= link_to "Show", user_path(u) %> </div> </td>
+      <td>   <div class = "col-md-1"> <%= link_to 'Destroy', user_registration_path(id: u.id), method: :delete, data: {confirm:'Are you sure you want to destroy your account?'} %></div> </td>
+    </tr>
+    <% end %>
+
+</div>
+    </table>
+ 

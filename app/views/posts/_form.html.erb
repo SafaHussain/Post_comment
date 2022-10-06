@@ -1,0 +1,28 @@
+<div class="container" style="text-align: middle">
+<% if user_signed_in? %>
+<h1> Pen down your thoughts in this post</h1>
+<%= form_for @post, url: posts_path do |form| %>
+
+  <% if @post.errors.any? %>
+  
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+    <p> <%= form.label :title %>
+    <%= form.rich_text_area :title %>
+    </p>
+    
+    <p>
+    <%= form.label :images %>
+     <%= form.file_field :images, multiple: true %><br />
+   </p>
+    <%= form.submit 'Post' %>
+<% end %>
+<% else %>
+<h1> not accessible</h1>
+<% end %>
+</div>

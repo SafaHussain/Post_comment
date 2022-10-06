@@ -1,0 +1,12 @@
+<div class="container row gx-3 gy-2 align-items-center"  >
+<h1>Showing selected item</h1>
+<p> Name : <%= @user.name %></p>
+<p> Email : <%= @user.email %></p>
+<p> Address: <%= @user.address %></p>
+<p> Password : <%= @user.password %></p>
+<p> Role : <%= @user.role %></p>
+<p> Status : <%= @user.status %></p>
+</div>
+<button> <%=link_to"New Post", new_post_path %> </button>
+<button> <%=link_to"Edit Post", edit_post_path %> </button>
+

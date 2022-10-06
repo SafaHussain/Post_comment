@@ -1,0 +1,13 @@
+<div class="container" style="text-align: middle">
+<%= form_for @post, url: post_path(@post), method: :patch do|form| %>
+    <p> <%= form.label :title %>
+    <%= form.rich_text_area :title %>
+    </p>
+    
+    <p>
+    <%= form.label :image %>
+     <%= form.file_field :image %><br />
+   </p>
+   <%= form.submit 'Post' %>
+<% end %>
+</div>

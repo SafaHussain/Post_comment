@@ -1,0 +1,62 @@
+<div class="container-fluid" style="text-align: middle">
+<h1> Add new Comment </h1>
+
+ <%= form_for @comment, url: post_comments_path(@post.id),remote: true,html: {id: "form"}, method: :post do|form| %>
+   
+    <% if @comment.errors.any? %>
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+    <% end %>
+
+    <%= form.hidden_field :post_id, :value => @post.id %>
+
+  <p> <%= form.label :description %>
+     <%= form.text_field :description, :required => true,html: {id: "des"} %>
+    </p>
+ <%= form.label :rating %>
+    
+ <div class="rateyo"></div>        
+ <p> <%= form.hidden_field :rating, id: 'rating', value: '' %></p>
+ <button id="submit"> <%= form.submit 'Post' %> </button> 
+<% end %>
+
+</div>
+ <script>  
+ var rat;
+ var rating;
+$(function () {
+  $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+    
+    rat = data.rating;
+    // setting data in hidden field
+    document.getElementById('rating').value = rat;
+
+ });
+ $('.submit').click( function(){ 
+//  var d= $('#des').val();
+ $.ajax({
+       url: "/posts/params[:post_id]/comments",
+       data: $('form').serialize(),
+        //url: `/posts/<%=params[:post_id]%>/comments?description=${d}&rating=${rat}`,
+        // data: $('form').serialize() + "&rating=" +rating+ "",
+        // data: "{#mydesc},{#rating}",
+        type: 'POST',
+        dataType: script
+    });
+ }
+ )});
+ 
+
+//    $(".submit").click(function () {
+//  $.ajax({
+//         url: "/posts/params[:post_id]/comments",
+//         data:"{#@comment.id},{#rating}",
+//         type: 'POST'
+//     });
+// }); 
+    
+</script>

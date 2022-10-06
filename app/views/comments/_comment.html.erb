@@ -1,0 +1,24 @@
+
+<div class="container" style="text-align: middle">
+<% @post.comments.each do |comment| %>
+<table>
+<tr> <td><%= comment.user.name %> comented :<td> 
+</tr>
+<tr> <th>Description </th> 
+<td><%= comment.description %></td>
+    <td>
+    <% comment.rating.to_i.times do  %>
+    <i class="bi bi-star-fill" style="color:orange"></i>
+    <% end %>
+    <%  r=comment.rating%>
+    <% (5-r).times do  %>
+    <i class="bi bi-star"></i>
+    <% end %>
+    </td>
+
+<td><%= link_to "Edit", edit_post_comment_path(comment.post.id,comment) %></td>
+<td><%= link_to "Delete", post_comment_path(comment.post.id, comment), method: :delete, data: {confirm: "Are you sure you want to delete the comment?"}%></td> 
+ </tr>
+ </table>
+ <%end%>
+ </div>

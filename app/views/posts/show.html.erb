@@ -1,0 +1,30 @@
+<div class="container-fluid" style="text-align: middle">
+    <h1 style="text-align: middle">Displaying your posts</h1>
+<table class="table table-striped">
+
+    <tr><td> Title :</td>
+    <td><%= @post.title.body.to_s.html_safe %></td></tr>
+
+     <tr><td> id : </td>
+     <td><%= @post.id %></td></tr>
+
+     <tr><td> Status :</td>
+     <td> <%= @post.status%></td></tr>
+
+     <tr><td> Images :</td>
+     <td> <% @post.images.each do|img| %> 
+     <%= image_tag img, style:'width:20% ;height:40%' %></td></tr>
+     
+    <% end %>
+</table>
+<%= render 'comments/form' %>
+
+<h1> Comments</h1>
+<div id="test">
+<%= render 'comments/comment'%>
+</div>
+
+<%= link_to 'Back', posts_path %>
+  </div>
+<script>
+
