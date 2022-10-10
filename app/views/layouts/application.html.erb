@@ -15,15 +15,7 @@
   </head>
 
   <body>
- <% if @comment.errors.any? %>
-    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this article from being saved:</h2>
-    <ul>
-    <% @comment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-    <% else %>
-    
+
 <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #D3D3D3; height:70px">
   <div class="container-fluid">
   
@@ -46,7 +38,6 @@
  
    </div>
 </nav>
-<% end %>
   <% flash.each do |type, msg| %>
   <div>
     <%= msg %>
