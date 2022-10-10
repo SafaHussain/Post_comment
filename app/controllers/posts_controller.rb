@@ -48,7 +48,8 @@ class PostsController < ApplicationController
     def approve
         @post = Post.find(params[:id])
         @post.update(status: "approved")
-        redirect_to 'http://localhost:3000/admin/post/'
+        redirect_to posts_path
+        # redirect_to 'http://localhost:3000/admin/post/'
     end    
     
     def destroy

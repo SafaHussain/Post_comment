@@ -43,7 +43,7 @@
          <td> 
       
         <% if current_user.role == "admin" && p.status=="pending" %>
-          <button>   <%= link_to "Approve",posts_path(p)  %></button>
+          <button>   <%= link_to "Approve",posts_approve_post_path(p)  %></button>
         <% end %>
          </td>
         
