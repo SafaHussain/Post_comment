@@ -2,7 +2,6 @@ class PostsController < ApplicationController
     load_and_authorize_resource
     
     def index
-        #  @posts = Post.all
         if current_user.role == "admin"
             @posts = Post.all
         else
@@ -67,3 +66,4 @@ class PostsController < ApplicationController
         params.require(:post).permit(:title, :description, images: [])
     end
 end
+   #  @posts = Post.all
