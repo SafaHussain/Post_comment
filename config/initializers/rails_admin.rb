@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  config.asset_source = :webpacker
+  # config.asset_source = :webpacker
  
   
   require Rails.root.join('lib', 'rails_admin', 'approve_user.rb')

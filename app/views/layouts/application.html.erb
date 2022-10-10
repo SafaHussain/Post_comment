@@ -23,7 +23,11 @@
   </div>
 
        <ul class="navbar-nav me-auto  ">
-       
+       <% if current_user.admin?%>
+       <li class="nav-item">
+          <a class="nav-link active; link-dark" href="/admin">Admin Dashboard</a>
+        </li>
+     <% end %>
         <li class="nav-item">
           <a class="nav-link active; link-dark" href="posts/new">New Post</a>
         </li>
