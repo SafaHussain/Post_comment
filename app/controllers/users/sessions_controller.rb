@@ -14,9 +14,9 @@ class Users::SessionsController < Devise::SessionsController
     if @user.status =="pending" || @user.status == "inactive"
       flash[:notice]="You cannot login."
       redirect_to new_user_session_path
-      else
+    else
       super
-      end
+    end
   end
 
   # DELETE /resource/sign_out
