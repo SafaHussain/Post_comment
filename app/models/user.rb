@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-      
+   # validates_presence_of :email, :password, :name, :address
 
 has_many :posts
 has_many :comments
@@ -19,6 +19,9 @@ after_initialize do
   if self.new_record?
    self.status ||= :pending
   end
+end
+def active_for_authentication?
+  super && self.active?
 end
 
 end

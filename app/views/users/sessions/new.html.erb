@@ -1,7 +1,7 @@
 
 <div class="container gx-3 gy-2 align-items-center" style="background-color:#ADD8E6; height:350px; width:500px; margin-top:60px">
 <h2>Log in</h2> <br />
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
   <div class="field mb-3 ">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,6 +23,7 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+
 <%= render "users/shared/links" %>
 
 </div>

@@ -9,15 +9,15 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    @user = User.find_by(email: params[:user][:email])
-    if @user.status =="pending" || @user.status == "inactive"
-      flash[:notice]="You cannot login."
-      redirect_to new_user_session_path
-    else
-      super
-    end
-  end
+  # def create
+  #   @user = User.find_by(email: params[:user][:email])
+  #   if @user.status =="pending" || @user.status == "inactive"
+  #     flash[:notice]="You cannot login."
+  #     redirect_to new_user_session_path
+  #   else
+  #     super
+  #   end
+  # end
 
   # DELETE /resource/sign_out
   # def destroy

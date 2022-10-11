@@ -16,14 +16,14 @@
 
   <body>
 
-<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #D3D3D3; height:70px" data: {turbo: false}>
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #D3D3D3; height:70px">
   <div class="container-fluid">
   
   <div class="col-md-9">
   </div>
 
        <ul class="navbar-nav me-auto  ">
-       
+       <% if current_user.present? %>
         <li class="nav-item">
           <a class="nav-link active; link-dark" href="posts/new">New Post</a>
         </li>
@@ -34,15 +34,13 @@
         <%= link_to "Logout", destroy_user_session_path, class: "nav-link active; link-dark" ,method: 'delete'%>
         
         </li>
+        <% end %>
         </ul>
- 
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%> 
    </div>
 </nav>
-  <% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>
     <%= yield %>
   </body>
 </html>

@@ -8,8 +8,12 @@
     </h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div id ="msg"><li><%= message %></li></div>
       <% end %>
     </ul>
   </div>
 <% end %>
+<script>
+$("#msg").on("click",function(){
+ alert("You must sign in first")
+});
