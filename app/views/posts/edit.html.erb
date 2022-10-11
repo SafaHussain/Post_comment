@@ -1,5 +1,5 @@
 <div class="container" style="text-align: middle">
-<%= form_for @post, url: post_path(@post), method: :patch do|form| %>
+<%= form_for @post, url: post_path(@post),data: {turbo: false}, method: :patch do|form| %>
     <p> <%= form.label :title %>
     <%= form.rich_text_area :title %>
     </p>
