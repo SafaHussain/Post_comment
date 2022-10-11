@@ -13,7 +13,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
   :address   => "smtp.business-email.in",
   :domain => 'safaassignment.herokuapp.com',
-  :port      => 25,
+  :port      => 587,
   :user_name => "admin@gmail.com",
   :password  => ENV['SMTP_PASSWORD'], 
   :authentication => :plain,
