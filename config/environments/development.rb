@@ -5,7 +5,21 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'safaassignment.herokuapp.com'}
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+  :address   => "smtp.business-email.in",
+  :domain => 'safaassignment.herokuapp.com',
+  :port      => 25,
+  :user_name => "admin@gmail.com",
+  :password  => ENV['SMTP_PASSWORD'], 
+  :authentication => :plain,
+  :enable_starttls_auto => true
+  }
+
   # Do not eager load code on boot.
   config.eager_load = false
 
