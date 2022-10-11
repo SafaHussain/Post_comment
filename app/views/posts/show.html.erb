@@ -3,7 +3,7 @@
 <table class="table table-striped" data: {turbo: false}>
 
     <tr><td> Title :</td>
-    <td><%= @post.title.body.to_s.html_safe %></td></tr>
+    <td><%= @post.title.body.to_plain_text %></td></tr>
 
      <tr><td> id : </td>
      <td><%= @post.id %></td></tr>
