@@ -6,20 +6,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   config.action_mailer.default_url_options = { host: 'safaassignment.herokuapp.com'}
-  config.action_mailer.raise_delivery_errors = true
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
-  ActionMailer::Base.raise_delivery_errors = true
-  ActionMailer::Base.smtp_settings = {
-  :address   => "smtp.business-email.in",
-  :domain => 'safaassignment.herokuapp.com',
-  :port      => 587,
-  :user_name => "admin@gmail.com",
-  :password  => ENV['SMTP_PASSWORD'], 
-  :authentication => :plain,
-  :enable_starttls_auto => true
-  }
-
+  
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -46,12 +33,9 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  # config.action_mailer.raise_delivery_errors = false
-  
-  # config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.perform_deliveries = true
+ 
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
