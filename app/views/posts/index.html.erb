@@ -19,15 +19,15 @@
 =end%>
     </tr>
     </thead>
+    <%if @posts.count>0 %>
  <% @posts.each do|p| %> 
         <% if current_user.role== "admin" || p.status =="approved" %>
-       
          <tr>
          <td> <%= p.title %></td>
          <td> <% p.images.each do|img| %>
-              <%= image_tag img, style: 'height:100% ; width:20%' %></p>
-              <% end %>
-               <td> <%= p.user.name %></td>  
+                <%= image_tag img, style: 'height:100% ; width:20%' %></p>
+                  <% end %>
+         <td> <%= p.user.name %></td>  
          <td> <%= p.comments.count %></td>  
          <td> <%= p.status %></td>  
         
@@ -50,6 +50,10 @@
          </tr>
        <% end %>
    
+    <% end %>
+    <% else %>
+    <h2> You haven't posted yet! </h2><br />
+    <h2>Give it a try now</h2> <% link_to 'New Post',new_post_path %>
     <% end %>
 </table>
 <button class="btn btn-light" ><%= link_to 'Back', root_path %> </button>

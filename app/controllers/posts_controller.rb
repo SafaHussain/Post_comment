@@ -20,7 +20,7 @@ class PostsController < ApplicationController
         if @post.save
             # UserMailer.with(user: @user).post_status.deliver_now
             flash[:notice]="Post is successfully added."
-            redirect_to post_path(@post)
+            redirect_to posts_path
         else
             render 'new'
         end
