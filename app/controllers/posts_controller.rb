@@ -27,8 +27,10 @@ class PostsController < ApplicationController
     end
 
     def show
+        if current_user.role== "admin" || p.status =="approved"
         @post = Post.find(params[:id])
         @comment = Comment.new
+        end
     end
     
     def edit
