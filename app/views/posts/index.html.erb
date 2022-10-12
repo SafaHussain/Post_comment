@@ -21,7 +21,7 @@
     </thead>
   
       <% @posts.each do|p| %> 
-       
+        <% if current_user.role== "admin" || p.status =="approved" %>
           <tr>
             <td> <%= p.title %> </td>
             <td> 
@@ -29,7 +29,6 @@
                 <%= image_tag img, style: 'height:100% ; width:20%' %></p>
               <% end %> 
             </td>
-            <td> <%= p.user.name %></td>  
             <td> <%= p.comments.count %></td>  
             <td> <%= p.status %></td>  
         
@@ -48,7 +47,7 @@
               <% end %>
             </td>
           </tr>
-        
+        <% end %>
       <% end %>
  
 </table>
