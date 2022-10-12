@@ -19,8 +19,8 @@
 =end%>
     </tr>
     </thead>
-    <%if @posts.count>0 %>
- <% @posts.each do|p| %> 
+    <%if @user.posts.count>0 %>
+      <% @posts.each do|p| %> 
         <% if current_user.role== "admin" || p.status =="approved" %>
          <tr>
          <td> <%= p.title %></td>
