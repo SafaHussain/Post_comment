@@ -22,35 +22,34 @@
   
       <% @posts.each do|p| %> 
         <% if current_user.role== "admin" || p.status =="approved" %>
-         <tr>
-         <td> <%= p.title %></td>
-         <td> <% p.images.each do|img| %>
+          <tr>
+            <td> <%= p.title %> </td>
+            <td> 
+              <% p.images.each do|img| %>
                 <%= image_tag img, style: 'height:100% ; width:20%' %></p>
-                  <% end %>
-         <td> <%= p.users.name %></td>  
-         <td> <%= p.comments.count %></td>  
-         <td> <%= p.status %></td>  
+              <% end %> 
+            </td>
+            <td> <%= p.user.name %></td>  
+            <td> <%= p.comments.count %></td>  
+            <td> <%= p.status %></td>  
         
-      <% if can? :read, p %>   
-         <td> <%= link_to "Show", post_path(p.id) %></td>
-      <% end %>
-      <% if can? :update, p %>   
-         <td> <%= link_to "Edit",edit_post_path(p) %></td>
-      <% end %>
-      <% if can? :destroy, p %> 
-         <td> <%= link_to"Delete", post_path(p), method: :delete, data: {confirm: "Are you sure you want to delete the post?"}%></td>
-      <% end %>
-         <td> 
-      
-        <% if current_user.role == "admin" && p.status=="pending" %>
-          <button>   <%= link_to "Approve",posts_approve_post_path(p)  %></button>
+            <% if can? :read, p %>   
+              <td> <%= link_to "Show", post_path(p.id) %></td>
+            <% end %>
+            <% if can? :update, p %>   
+              <td> <%= link_to "Edit",edit_post_path(p) %></td>
+            <% end %>
+            <% if can? :destroy, p %> 
+              <td> <%= link_to"Delete", post_path(p), method: :delete, data: {confirm: "Are you sure you want to delete the post?"}%></td>
+            <% end %>
+            <td> 
+              <% if current_user.role == "admin" && p.status=="pending" %>
+                <%= button_to "Approve",posts_approve_post_path(p) %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-         </td>
-        
-         </tr>
-       <% end %>
-   
-    <% end %>
+      <% end %>
  
 </table>
 <button class="btn btn-light" ><%= link_to 'Back', root_path %> </button>
