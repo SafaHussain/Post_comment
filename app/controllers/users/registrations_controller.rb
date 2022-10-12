@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.with(user: @user).user_status.deliver_now
     flash[:notice]= "User is created."
     redirect_to user_path(@user)
     else 

@@ -18,7 +18,7 @@ class PostsController < ApplicationController
          @post = Post.new(post_params)
         @post.user_id=current_user.id
         if @post.save
-            UserMailer.with(user: @user).post_status.deliver_now
+            # UserMailer.with(user: @user).post_status.deliver_now
             flash[:notice]="Post is successfully added."
             redirect_to post_path(@post)
         else
