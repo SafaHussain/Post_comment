@@ -21,7 +21,7 @@
     </thead>
   
       <% @posts.each do|p| %> 
-        <% if current_user.role== "admin" || p.status =="approved" %>
+       
           <tr>
             <td> <%= p.title %> </td>
             <td> 
@@ -48,7 +48,7 @@
               <% end %>
             </td>
           </tr>
-        <% end %>
+        
       <% end %>
  
 </table>
