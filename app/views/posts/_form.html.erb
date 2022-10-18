@@ -19,10 +19,19 @@
     <p>
     <%= form.label :images %>
      <%= form.file_field :images, multiple: true %><br />
+     
+     <% if images.attached? %>
+     <div id="img"></div>
+     <% end %>
    </p>
     <%= form.submit 'Post' %>
 <% end %>
 <% else %>
-<h1> not accessible</h1>
+<h1>Not accessible!</h1>
 <% end %>
 </div>
+
+
+<script>
+
+</script>
