@@ -1,0 +1,109 @@
+<html>
+
+<head>
+	<style>
+		.calculator {
+			padding: 4px;
+			margin: 4px;
+			background-color: gray;
+			width: 100%;
+			height: auto;
+		}
+		
+		.form-control {
+			border: 0px solid transparent;
+			padding: 0px;
+			border: 0px;
+			border-radius: 0px;
+		}
+		
+		input[type="text"]:disabled {
+			background-color: white;
+			text-align: right;
+			padding: 8px;
+		}
+		button{
+			width:30px;
+			background-color:#ADD8E6;
+			margin:5px;
+			border:1px solid;
+		}
+		.red{
+			background-color:red;
+		}
+	</style>
+    
+  <script>
+   $(document).ready(function(){
+   $(".design").click(function(){
+	
+	var e= $(this).text();
+	if (e==parseInt(e)){
+   $(this).addClass("red");
+	}
+	if ($("#expression").val() == 0)                       	
+	$("#expression").val($(this).text());
+	else
+    $("#expression").val($("#expression").val() + $(this).text());
+  // alert("Text is: " + $(this).text());
+  
+  });
+
+    $(".clr").click(function(){
+    $("#expression").val("0");
+	$(".design").removeClass("red");
+  });
+  });
+ </script>
+    
+  <script>
+$(document).ready(function(){
+  $(".eq").click(function(){
+  var v = $("#expression").val();
+  var result = eval(v);
+  $("#expression").val(result);
+ });
+});
+  
+    </script>   
+</head>
+
+<body style="background-color:#f9f9fa;">
+
+	<div class="row">
+		<div class="col-sm-8 col-md-4">
+			<br>
+			<br>
+			<br>
+			<br>
+<div class="container calculator">
+	<div class="form-input">
+	
+ <input type="text" class="form-control input-lg" id="expression" value="0" disabled >
+
+	</div>
+	<br>
+	<br>
+	
+    <div class="container-fluid">
+	
+    <div class="row">	
+ 	
+    <% a=[1,2,3,'+',5,6,7,'-',8,9,0,'*','/'] %>
+   
+  <% a.each do|l| %>
+   <div class="col-md-3">
+  <button class="design" ><%= l %>
+  </button>
+  </div>
+  <% end %>
+  <div class="col-md-3"> <button class="eq" style="background-color:yellow">=</button></div>
+  <div class="col-md-3"> <button class="clr" style="background-color:#FFCCCB">AC</button></div>
+
+            
+        </div>
+    </div>
+ 
+</body>
+
+</html>

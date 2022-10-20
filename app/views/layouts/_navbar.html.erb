@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+  <style>
+ 
+
+.active{
+      background-color:yellow;
+}
+.blue{
+  background-color:blue;
+
+}
+
+  </style>
+  <script>
+ $(document).ready(function(){
+ $(".link-dark").click(function(){
+$('.navbar').find('.active').removeClass('active') 
+        $(this).addClass("active");
+        
+    // if ($(this).siblings().hasClass("active"))
+    // {$(this).addClass("blue");}
+        
+    });
+ });
+   
+ 
+</script>
+
+   </head>
+   <body>
+ <% if user_signed_in? %>
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #D3D3D3; height:70px" >
+  <div class="container-fluid">
+  
+  <div class="col-md-9">
+  </div>
+       <ul class="navbar-nav me-auto  ">
+       <% if current_user.admin? %>
+        <li class="nav-item">
+          <a class="nav-link active; link-dark col-md-8"  href="/posts/new" data-remote="true" >New Post</a>
+     
+           </li>
+            <% end %>
+        <li class="nav-item">
+           <a class="nav-link active; link-dark col-md-8"  href="/posts" data-remote="true" >All Posts</a>
+     
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active; link-dark col-md-12"  href="/users/users/calculator" data-remote="true" >Calculator</a>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Logout", destroy_user_session_path, class: "nav-link active; link-dark" ,method: 'delete'%>
+        
+        </li>
+    
+        </ul>
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%> 
+   </div>
+</nav>
+  <% end%>
+</body>
+</html>

@@ -1,0 +1,62 @@
+
+<html>
+<head>
+  
+  </head>
+  <body>
+<div class="container" >
+<table class="table table-hover">
+   <thead  class="table-dark"> 
+   <tr>
+    <th> Title </th>
+    <th> Images </th>
+    <th> Comments </th>
+    <th> Status </th>
+   
+    <%
+=begin%>
+ <th>  Show </th> 
+    <th> <% if can? :update, @post %>Edit <% end %> </th>
+    <th> Delete </th>
+    <% if can? :manage, p %>  <th> Approve </th> <% end %> 
+     
+<%
+=end%>
+    </tr>
+    </thead>
+      <% @posts.each do|p| %> 
+        <% if current_user.role== "admin" || p.status =="approved" %>
+          <tr>
+            <td> <%= p.title %> </td>
+            <td> 
+              <% p.images.each do|img| %>
+                <%= image_tag img, style: 'height:100% ; width:20%' %></p>
+              <% end %> 
+            </td>
+            <td> <%= p.comments.count %></td>  
+            <td> <%= p.status %></td>  
+        
+            <% if can? :read, p %>   
+              <td> <%= link_to "Show", post_path(p.id) %></td>
+            <% end %>
+            <% if can? :update, p %>   
+              <td> <%= link_to "Edit",edit_post_path(p) %></td>
+            <% end %>
+            <% if can? :destroy, p %> 
+              <td> <%= link_to"Delete", post_path(p), method: :delete, data: {confirm: "Are you sure you want to delete the post?"}%></td>
+            <% end %>
+            <td> 
+              <% if current_user.role == "admin" && p.status=="pending" %>
+                <%= button_to "Approve",posts_approve_post_path(p) %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+ 
+</table>
+     
+<button class="btn btn-light" ><%= link_to 'Back', root_path %> </button>
+</div>
+</body>
+</html>
