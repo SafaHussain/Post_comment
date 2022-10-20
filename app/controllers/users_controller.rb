@@ -11,4 +11,9 @@ class UsersController < ApplicationController
         redirect_to 'http://localhost:3000/admin/user'
     end    
     
+    def calculator
+        respond_to do|format|
+            format.js {render :layout => false }
+        end
+    end
 end

@@ -4,6 +4,11 @@ class PostsController < ApplicationController
     def index
         if current_user.role == "admin"
             @posts = Post.all
+            respond_to do |format|
+                format.html
+                format.js {render :layout => false }    
+      
+             end
         else
         @posts = current_user.posts
          end
@@ -11,6 +16,9 @@ class PostsController < ApplicationController
     
     def new
         @post = Post.new
+        respond_to do|format|
+            format.js {render :layout => false }
+        end
     end
     
     def create 
@@ -18,6 +26,7 @@ class PostsController < ApplicationController
          @post = Post.new(post_params)
         @post.user_id=current_user.id
         if @post.save
+            
             # UserMailer.with(user: @user).post_status.deliver_now
             flash[:notice]="Post is successfully added."
             redirect_to posts_path

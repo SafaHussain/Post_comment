@@ -7,17 +7,20 @@ Rails.application.routes.draw do
  }
  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'homes#index'
+  root to: 'posts#index'
   # resources :homes
   resources :users do
   member do
-    get 'users/approve', to: 'users#approve'
+    post 'users/approve', to: 'users#approve'
+  end
+  collection do
+  get 'users/calculator', to: 'users#calculator'
   end
 end
   resources :posts do
      resources :comments
      member do
-      get 'posts/approve', to: 'posts#approve' 
+      post 'posts/approve', to: 'posts#approve' 
      end
   end
 

@@ -1,4 +1,10 @@
-<div class="container" style="text-align: middle">
+
+ <html>
+ <head>
+ 
+  </head>
+  <body>
+<div class="container" style="text-align: middle" %>
 <% if user_signed_in? %>
 <h1> Pen down your thoughts in this post</h1>
 <%= form_for @post, url: posts_path do |form| %>
@@ -19,10 +25,18 @@
     <p>
     <%= form.label :images %>
      <%= form.file_field :images, multiple: true %><br />
-     
-     <% if images.attached? %>
+<%
+=begin%>
+      
+     <% if images.attached? %> 
+<%
+=end%>
      <div id="img"></div>
-     <% end %>
+     <%
+=begin%>
+ <% end %> 
+<%
+=end%>
    </p>
     <%= form.submit 'Post' %>
 <% end %>
@@ -31,7 +45,5 @@
 <% end %>
 </div>
 
-
-<script>
-
-</script>
+</body>
+</html>
